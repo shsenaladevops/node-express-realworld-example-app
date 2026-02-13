@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/gothinkster/node-express-realworld-example-app.git'
+                    url: 'https://github.com/shsenala/node-express-realworld-example-app.git'
             }
         }
 
