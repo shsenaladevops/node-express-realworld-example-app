@@ -1,4 +1,4 @@
-pspipeline {
+pipeline {
     agent any
 
     tools {
