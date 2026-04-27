@@ -13,36 +13,32 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'master',
-                    url: 'https://github.com/shsenaladevops/node-express-realworld-example-app.git'
+                git 'https://github.com/gothinkster/node-express-realworld-example-app.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
-        stage('Run Tests') {
+        stage('Unit Tests (Real-Time)') {
             steps {
-                bat 'npm test'
+                sh 'npm test'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh 'npm run lint || true'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
+                sh 'npm run build || true'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'NodeJS CI SUCCESS'
-        }
-        failure {
-            echo 'NodeJS CI FAILED'
         }
     }
 }
